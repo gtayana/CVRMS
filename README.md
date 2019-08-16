@@ -21,4 +21,30 @@ CVRMS is an R package designed to extract marker subset from ranked marker datas
  
  -p : phenotypes input (row : samples, column : phenotypes) - the first column includes the samples names and the traits of interests are from the second to end column)
  
- - 
+ -pn : phenotype column number
+ 
+ -gw : GWAS result file (e.g. plink, GAPIT, etc.)
+ 
+ -gw_snp_cn : column number of SNPs in GWAS result file
+ 
+ -gw_chr_cn : column number of chromosome in GWAS result file
+ 
+ -gw_pos_cn : column number of position of SNP in GWAS result file
+ 
+ -gw_pv_cn : column number of p-value of SNP in GWAS result file
+ 
+ -min : Minimum number of markers user wants
+ 
+ -max : Maximum number of markers user wants
+ 
+ -cv : how many subsets for cross-validation in grid search
+ 
+ -a : Goal of prediction accuracy (correlation coefficient - regression, Correct decision rate - classification)
+ 
+ -d : minimum increasing rate of prediction accuracy for selecting markers
+ 
+ -ss : how many selected markers for each iteration
+ 
+ -m : prediction method (rrblup and rf are only available)
+ 
+ -t : Limitation of time (hour) for iteration
