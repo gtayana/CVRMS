@@ -48,3 +48,4 @@ CVRMS is an R package designed to extract marker subset from ranked marker datas
  -m : prediction method (rrblup and rf are only available)
  
  -t : Limitation of time (hour) for iteration
+ 
