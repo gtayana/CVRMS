@@ -52,4 +52,4 @@ CVRMS is an R package designed to extract marker subset from ranked marker datas
  
  -t : Limitation of time (hour) for iteration
  
- - snpinfo.txt : SNP information file similar with plink map file which have to contains SNP name, Chromosome, Position (BP).
+ -SNP_info.txt : SNP information file similar with plink map file which have to contains SNP name, Chromosome, Position (BP).
