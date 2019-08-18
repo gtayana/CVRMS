@@ -15,8 +15,11 @@ CVRMS is an R package designed to extract marker subset from ranked marker datas
    
  ## Quick example (in linux, ios, windows command console)
   * Extract rice_geno.zip file
+  
   $ Rscript CVRMS_v1.3.R -g rice_geno.txt -p rice_pheno.txt -pn 1 -gw gwas_result.txt -gw_snp_cn 1 -gw_chr_cn 2 -gw_pos_cn 3 -gw_pv_cn 4 -min 10 -max 300 -cv 5 -a 0.9 -d 0.001 -ss 1 -m rrblup -t 1
+  
   $ cd phenotype1
+  
   $ Rscript Create_final_model_v1.0.R snp_info.txt
   
 ## Detail options
