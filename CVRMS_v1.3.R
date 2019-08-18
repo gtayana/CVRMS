@@ -1,6 +1,7 @@
 #!/data/lovemun/src_packages/R-3.4.0/bin/Rscript
-#
-#
+# created by Seongmun Jeong
+# Contact : likemun@gmail.com
+
 suppressPackageStartupMessages(library("argparse"))
 
 parser <- ArgumentParser()
