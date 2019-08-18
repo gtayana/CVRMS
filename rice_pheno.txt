@@ -1,4 +1,4 @@
-SampleID	Flowering.time.at.Arkansas	Flowering.time.at.Faridpur
+SampleID	phenotype1	phenotype2
 081215-A05_1	75.08333333	64
 081215-A06_3	89.5	66
 081215-A07_4	94.5	67
