@@ -89,7 +89,7 @@ val_geno <- geno1[val_samples,]
 val_pheno <- phenotype[val_samples]
 geno2 <- geno1[-val_samples,]
 phenotype1 <- phenotype[-val_samples]
-all_train_acc <- NULL
+all_train_acc <- matrix(nrow = cv, ncol = 2)
 cat("Trait name is ", colnames(pheno1)[pheno_num], '\n')
 if (is.null(gwasfile)){
     cmd <- paste0("mkdir -p ", colnames(pheno1)[pheno_num], "_wo_gwas")
@@ -110,6 +110,7 @@ if (is.null(gwasfile)){
         marker_effects = varImp(ttMod)$importance
     }
     gwas_results <- data.frame(SNP = names(marker_effects), P = marker_effects)
+    snp_cn <- 1
     pv_cn <- 2
     write.csv(gwas_results, file = "Marker_effects.csv", quote=F, row.names=F)
 } else {
@@ -155,7 +156,7 @@ for (j in 1:cv){
         pred_pheno <- predict(ttMod, newdata = test_geno)
     }
     train_acc <- cor(pred_pheno, test_pheno, use = "complete")
-    all_train_acc <- c(all_train_acc, as.vector(train_acc))
+    all_train_acc[j,1] <- as.vector(train_acc)
     cat("Training samples correlation for all markers is ", train_acc, "\n")
 
     ix1 <- ix
@@ -251,7 +252,7 @@ for (j in 1:cv){
         k = k+1
     }
     cat("# of selected markers is ", length(train_ix), " and correlation is ", train_itr_acc, "for ", j, "-th iteration", "\n")
-    save.image("temp.RData")
+    all_train_acc[j,2] <- train_itr_acc                                
 
     a <- plyr::ldply(ms_out, rbind)
     count <- length(which(!is.na(as.vector(a[1,-1]))))
@@ -308,4 +309,5 @@ for (i in 1:length(files)){
 at <- unlist(marker_list)
 at_table <- table(at)[order(table(at), decreasing = TRUE)]
 write(names(at_table)[1:ceiling(length(at)/cv)], file = "Final_selected_markers.txt")
-write(all_train_acc, file = "Final_markers_accuracy.txt")
+colnames(all_train_acc) <- c("All", "Selected")
+write.table(all_train_acc, file = "Final_markers_accuracy.txt")
